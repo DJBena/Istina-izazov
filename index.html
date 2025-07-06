@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Truth or Dare</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="screen1" class="screen active">
+    <h2>Unesi imena igrača</h2>
+    <input type="text" id="playerInput" placeholder="Ime igrača" />
+    <button id="addPlayer">Dodaj</button>
+    <ul id="playerList"></ul>
+    <button id="toCategory">DALJE</button>
+  </div>
+
+  <div id="screen2" class="screen">
+    <button class="backBtn" data-back="1">⟵ Nazad</button>
+    <h2>Odaberi kategoriju</h2>
+    <div id="categories">
+      <button class="category" data-cat="casual">Casual</button>
+      <button class="category" data-cat="funny">Funny</button>
+      <button class="category" data-cat="deep">Deep</button>
+      <button class="category" data-cat="dirty18">Dirty 18+</button>
+      <button class="category" data-cat="custom">Custom</button>
+    </div>
+  </div>
+
+  <div id="screen3" class="screen">
+    <button class="backBtn" data-back="2">⟵ Nazad</button>
+    <h2 id="currentPlayer"></h2>
+    <img src="assets/bottle.png" id="bottle" />
+    <p id="challengeText"></p>
+  </div>
+
+  <audio id="spinSound" src="assets/glass_tap.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
