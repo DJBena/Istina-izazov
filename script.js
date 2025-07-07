@@ -520,23 +520,35 @@ addPlayer.onclick = () => {
     players.push(name);
 
     const li = document.createElement("li");
-    li.textContent = name;
+    li.style.display = "flex";
+    li.style.justifyContent = "center";
+    li.style.alignItems = "center";
+    li.style.gap = "10px";
+    li.style.margin = "5px 0";
+
+    const nameSpan = document.createElement("span");
+    nameSpan.textContent = name;
 
     const removeBtn = document.createElement("button");
-    removeBtn.textContent = " ✕";
-    removeBtn.style.marginLeft = "10px";
+    removeBtn.textContent = "✕";
     removeBtn.style.color = "red";
     removeBtn.style.background = "transparent";
     removeBtn.style.border = "none";
     removeBtn.style.cursor = "pointer";
-    removeBtn.style.fontWeight = "bold";
     removeBtn.style.fontSize = "18px";
+    removeBtn.style.fontWeight = "bold";
 
     removeBtn.onclick = () => {
-      // Makni iz memorije i s ekrana
       players = players.filter(p => p !== name);
       li.remove();
     };
+
+    li.appendChild(nameSpan);
+    li.appendChild(removeBtn);
+    playerList.appendChild(li);
+    playerInput.value = "";
+  }
+};
 
     li.appendChild(removeBtn);
     playerList.appendChild(li);
