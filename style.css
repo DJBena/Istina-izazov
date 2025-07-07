@@ -127,8 +127,3 @@ button:hover {
 .backBtn:hover {
   color: #aaa;
 }
-
-#playerList li {
-  margin: 5px 0;
-  font-size: 18px;
-}
