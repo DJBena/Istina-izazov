@@ -525,25 +525,6 @@ addPlayer.onclick = () => {
   }
 };
 
-    li.appendChild(nameSpan);
-    li.appendChild(removeBtn);
-    playerList.appendChild(li);
-    playerInput.value = "";
-  }
-};
-
-    li.appendChild(removeBtn);
-    playerList.appendChild(li);
-    playerInput.value = "";
-  }
-};
-
-    li.appendChild(removeBtn);
-    playerList.appendChild(li);
-    playerInput.value = "";
-  }
-};
-
 toCategory.onclick = () => {
   if (players.length >= 2) {
     screen1.classList.remove("active");
