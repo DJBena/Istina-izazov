@@ -516,32 +516,14 @@ let database = {
 
 addPlayer.onclick = () => {
   const name = playerInput.value.trim();
-  if (name && !players.includes(name)) {
+  if (name) {
     players.push(name);
-
     const li = document.createElement("li");
-    li.style.display = "flex";
-    li.style.justifyContent = "center";
-    li.style.alignItems = "center";
-    li.style.gap = "10px";
-    li.style.margin = "5px 0";
-
-    const nameSpan = document.createElement("span");
-    nameSpan.textContent = name;
-
-    const removeBtn = document.createElement("button");
-    removeBtn.textContent = "✕";
-    removeBtn.style.color = "red";
-    removeBtn.style.background = "transparent";
-    removeBtn.style.border = "none";
-    removeBtn.style.cursor = "pointer";
-    removeBtn.style.fontSize = "18px";
-    removeBtn.style.fontWeight = "bold";
-
-    removeBtn.onclick = () => {
-      players = players.filter(p => p !== name);
-      li.remove();
-    };
+    li.textContent = name;
+    playerList.appendChild(li);
+    playerInput.value = "";
+  }
+};
 
     li.appendChild(nameSpan);
     li.appendChild(removeBtn);
