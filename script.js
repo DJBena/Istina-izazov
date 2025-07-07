@@ -518,9 +518,28 @@ addPlayer.onclick = () => {
   const name = playerInput.value.trim();
   if (name) {
     players.push(name);
+
     const li = document.createElement("li");
-    li.textContent = name;
+    
+    const nameSpan = document.createElement("span");
+    nameSpan.textContent = name;
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "❌";
+    removeBtn.style.marginLeft = "10px";
+    removeBtn.style.background = "transparent";
+    removeBtn.style.border = "none";
+    removeBtn.style.color = "#f55";
+    removeBtn.style.cursor = "pointer";
+    removeBtn.onclick = () => {
+      players = players.filter(p => p !== name);
+      playerList.removeChild(li);
+    };
+
+    li.appendChild(nameSpan);
+    li.appendChild(removeBtn);
     playerList.appendChild(li);
+
     playerInput.value = "";
   }
 };
