@@ -1,3 +1,4 @@
+const spinSoundSmoke = document.getElementById("spinSoundSmoke");
 const screen1 = document.getElementById("screen1");
 const screen2 = document.getElementById("screen2");
 const screen3 = document.getElementById("screen3");
