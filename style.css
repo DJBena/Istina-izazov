@@ -150,3 +150,9 @@ button.category[data-cat="drink"] {
   background: rgba(34, 139, 34, 0.3);
   border-color: rgba(34, 139, 34, 0.6);
 }
+.smoke-btn img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
