@@ -511,32 +511,6 @@ let database = {
 "Oblikuj usnama riječ 'želim te' bez zvuka – neka netko pogodi.",
 "Pošalji nekome poruku: 'Zamisli nas dvoje večeras...'",
 "Zatraži izazov od nekoga – i napravi ga bez prigovora."]
-  },
-    drink: {
-    truth: [
-      "Ko ti je najprivlačnija osoba ovdje? Ili pij.",
-      "Jesi li ikad bio zaljubljen u nekoga od prisutnih? Ili pij.",
-      "Koja je tvoja najveća pijana sramota? Ili pij.",
-      "S kim bi ovdje imao avanturu? Ili pij.",
-      "Jesi li ikad lagao prijatelju? Ili pij.",
-      "Kada si zadnji put imao one-night stand? Ili pij.",
-      "Koji je tvoj najveći porok? Ili pij.",
-      "Koju tajnu nikad nikome nisi rekao? Ili pij.",
-      "Jesi li ikada bio uhvaćen u laži? Ili pij.",
-      "Imaš li fetiš? Reci ili pij."
-    ],
-    dare: [
-      "Popij dva gutljaja.",
-      "Nazdravi s osobom lijevo i popij zajedno.",
-      "Ispričaj neku sramotu ili popij.",
-      "Zamijeni piće s nekim nasumično ili popij svoje.",
-      "Otpjevaj stih iz pjesme na glas ili popij.",
-      "Zavrti se u krug 5 puta pa popij.",
-      "Popij iz tuđe čaše (ako pristanu), ili popij svoju.",
-      "Reci 'volim te' nekom u sobi ili popij.",
-      "Oponašaj nekoga u sobi dok ne pogode ili popij.",
-      "Popij onoliko gutljaja koliko ima slova tvoje ime."
-    ]
   }
 };
 
