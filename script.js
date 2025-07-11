@@ -767,6 +767,13 @@ toCategory.onclick = () => {
 document.querySelectorAll(".category").forEach(btn => {
   btn.onclick = () => {
     category = btn.dataset.cat;
+        if (btn.dataset.cat === "smoke") {
+      bottle.src = "assets/joint.png";
+      sound = document.getElementById("spinSoundSmoke");
+    } else {
+      bottle.src = "assets/bottle.png";
+      sound = document.getElementById("spinSound");
+    }
 
     // 🚨 RESET STANJA IGRE
     clearInterval(nameInterval); // zaustavi ako je ostao interval
