@@ -10,7 +10,7 @@ const toCategory = document.getElementById("toCategory");
 const bottle = document.getElementById("bottle");
 const currentPlayer = document.getElementById("currentPlayer");
 const challengeText = document.getElementById("challengeText");
-const sound = document.getElementById("spinSound");
+let sound = document.getElementById("spinSound");
 
 let truthBtn, dareBtn;
 
