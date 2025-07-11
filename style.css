@@ -141,3 +141,12 @@ button:hover {
 button.category[data-cat="drink"] {
   background-color: rgba(128, 0, 128, 0.3); /* Ljubičasto-prozirno */
 }
+.smoke-btn {
+  background: rgba(34, 139, 34, 0.15); /* blago zelena */
+  border: 1px solid rgba(34, 139, 34, 0.4);
+}
+
+.smoke-btn:hover {
+  background: rgba(34, 139, 34, 0.3);
+  border-color: rgba(34, 139, 34, 0.6);
+}
