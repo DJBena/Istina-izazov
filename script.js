@@ -812,10 +812,12 @@ function spinBottleWithNameSpin() {
   let angle = 360 * (minRotations + extraRotations) + Math.floor(Math.random() * 360);
   totalRotation += angle;
 
-  bottle.style.transition = 'transform 8s cubic-bezier(0.1, 1, 0.2, 1)';
-  bottle.style.transform = `rotate(${totalRotation}deg)`;
-  sound.currentTime = 0;
-  sound.play();
+ bottle.style.transition = 'transform 8s cubic-bezier(0.1, 1, 0.2, 1)';
+bottle.style.transform = `rotate(${totalRotation}deg)`;
+
+sound.pause();         // ⛔ obavezno zaustavi ako još svira
+sound.currentTime = 0; // ⏮️ vrati na početak
+sound.play();          // ▶️ pusti od početka
 
   setTimeout(() => {
     clearInterval(nameInterval);
