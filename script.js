@@ -512,6 +512,63 @@ let database = {
 "Pošalji nekome poruku: 'Zamisli nas dvoje večeras...'",
 "Zatraži izazov od nekoga – i napravi ga bez prigovora."]
   }
+  drink: {
+  truth: [
+    "Ko je ovdje najprivlačniji? Ili pij.",
+    "S kim bi od prisutnih najradije imao/la avanturu? Ili pij.",
+    "Kad si zadnji put imao/la seks? Ili pij.",
+    "Jesi li se ikada zaljubio/la u prijatelja/cu? Ili pij.",
+    "Koja ti je najluđa pijana priča? Ili pij.",
+    "Jesi li ikada varao/la u vezi? Ili pij.",
+    "Imaš li neku tajnu simpatiju ovdje? Ili pij.",
+    "Koji ti je najčudniji fetiš? Ili pij.",
+    "Koliko si osoba poljubio/la u životu? Ili pij.",
+    "Koja ti je najveća tajna? Ili pij.",
+    "Jesi li se ikada napio/la do besvijesti? Ili pij.",
+    "Jesi li ikada poslao/la nude? Ili pij.",
+    "Koliko često misliš na seks? Ili pij.",
+    "Koja je tvoja najveća nesigurnost? Ili pij.",
+    "Da možeš promijeniti jednu stvar na sebi, što bi to bilo? Ili pij.",
+    "S kim bi ovdje išao/la na dejt? Ili pij.",
+    "Imaš li fetiš za nešto specifično? Ili pij.",
+    "Koju poruku si zadnju izbrisao/la i zašto? Ili pij.",
+    "Jesi li ikad bio/la u trojci? Ili pij.",
+    "Jesi li ikada lagao/la partneru? Ili pij.",
+    "Koji je tvoj najgori dejt ikad? Ili pij.",
+    "Što misliš o vezama na jednu noć? Ili pij.",
+    "S kim bi ovdje proveo/la noć? Ili pij.",
+    "Bi li oprostio/la prevaru? Ili pij.",
+    "Imaš li tajnu poruku u mobitelu? Ili pij.",
+    "Što ti prvo zapne za oko kod osobe? Ili pij."
+  ],
+  dare: [
+    "Popij jedan gutljaj.",
+    "Popij dva gutljaja.",
+    "Nazovi bivšeg/bivšu i reci da ga/je još voliš. Ili pij.",
+    "Ispričaj najneugodniju priču iz izlaska. Ili pij.",
+    "Pošalji slučajnoj osobi emoji poljupca. Ili pij.",
+    "Objavi čudnu sliku u story. Ili pij.",
+    "Oponašaj nekoga iz društva. Ili pij.",
+    "Stavi led u majicu i ostavi ga 30 sekundi. Ili pij.",
+    "Napravi 10 čučnjeva bez da prospeš piće. Ili pij.",
+    "Promijeni status veze na 'u vezi' i ne objašnjavaj. Ili pij.",
+    "Nacrtaj nešto s markerom po licu. Ili pij.",
+    "Zagrli osobu do sebe i reci joj nešto iskreno. Ili pij.",
+    "Reci nekom tko ti je ovdje najseksi. Ili pij.",
+    "Pleši kao da te nitko ne gleda 15 sekundi. Ili pij.",
+    "Uzmi selfie s ozbiljnom facom i objavi ga. Ili pij.",
+    "Pokušaj reći abecedu unatrag. Ako ne možeš – pij.",
+    "Pričaj 30 sekundi bez da kažeš 'i' ili pij.",
+    "Glumi životinju po izboru ostalih 10 sekundi. Ili pij.",
+    "Proglasi nekog 'kralj/ica večeri' i pokloni mu/joj piće.",
+    "Napravi story i napiši 'najluđa noć ikad'. Ili pij.",
+    "Pogodi nasumično pitanje iz deep kategorije. Ako ne znaš – pij.",
+    "Zamisli osobu ovdje s kim bi imao/la one-night stand. Ili pij.",
+    "Zatvori oči i zagrli nekog – ako fulas, pij.",
+    "Pokušaj izvesti zavodnički pogled. Ako ne uspiješ – pij.",
+    "Ispuni izazov po izboru osobe do tebe. Ili pij."
+  ]
+}
 };
 
 addPlayer.onclick = () => {
