@@ -511,7 +511,7 @@ let database = {
 "Oblikuj usnama riječ 'želim te' bez zvuka – neka netko pogodi.",
 "Pošalji nekome poruku: 'Zamisli nas dvoje večeras...'",
 "Zatraži izazov od nekoga – i napravi ga bez prigovora."]
-  }
+  },
     drink: {
     truth: [
       "Ko ti je najprivlačnija osoba ovdje? Ili pij.",
