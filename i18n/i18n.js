@@ -1,10 +1,18 @@
 (() => {
   const databaseHr = database;
   const databaseEn = window.i18nDatabaseEn;
+  const databaseDe = window.i18nDatabaseDe;
+
+  const databases = {
+    hr: databaseHr,
+    en: databaseEn,
+    de: databaseDe
+  };
 
   const ui = {
     hr: {
       pageTitle: "Istina ili izazov",
+      languageLabel: "Jezik",
       playersTitle: "Unesi imena igrača",
       playerPlaceholder: "Ime igrača",
       add: "Dodaj",
@@ -14,6 +22,7 @@
       truth: "ISTINA",
       dare: "IZAZOV",
       needPlayers: "Dodaj barem 2 igrača.",
+      bottleAlt: "Boca",
       footer: "© 2025 Free Games by BENA – Igra bez reklama i bez naplate",
       categories: {
         casual: "Opušteno",
@@ -27,6 +36,7 @@
     },
     en: {
       pageTitle: "Truth or Dare",
+      languageLabel: "Language",
       playersTitle: "Enter player names",
       playerPlaceholder: "Player name",
       add: "Add",
@@ -36,6 +46,7 @@
       truth: "TRUTH",
       dare: "DARE",
       needPlayers: "Add at least 2 players.",
+      bottleAlt: "Bottle",
       footer: "© 2025 Free Games by BENA – Free to play and ad-free",
       categories: {
         casual: "Casual",
@@ -46,21 +57,68 @@
         drink: "Drink",
         smoke: "Smoke"
       }
+    },
+    de: {
+      pageTitle: "Wahrheit oder Pflicht",
+      languageLabel: "Sprache",
+      playersTitle: "Spielernamen eingeben",
+      playerPlaceholder: "Spielername",
+      add: "Hinzufügen",
+      next: "WEITER",
+      back: "⟵ Zurück",
+      categoriesTitle: "Kategorie auswählen",
+      truth: "WAHRHEIT",
+      dare: "PFLICHT",
+      needPlayers: "Füge mindestens 2 Spieler hinzu.",
+      bottleAlt: "Flasche",
+      footer: "© 2025 Free Games by BENA – Kostenlos und werbefrei",
+      categories: {
+        casual: "Locker",
+        funny: "Lustig",
+        deep: "Tiefgründig",
+        dirty18: "Unzensiert 18+",
+        custom: "Eigene Wahl",
+        drink: "Trinken",
+        smoke: "Rauchen"
+      }
     }
   };
 
-  let currentLanguage = localStorage.getItem("truthOrDareLanguage") ||
-    (navigator.language && navigator.language.toLowerCase().startsWith("hr") ? "hr" : "en");
+  function detectInitialLanguage() {
+    const saved = localStorage.getItem("truthOrDareLanguage");
+    if (saved && ui[saved]) return saved;
+
+    const browserLanguage = (navigator.language || "").toLowerCase();
+    if (browserLanguage.startsWith("hr")) return "hr";
+    if (browserLanguage.startsWith("de")) return "de";
+    return "en";
+  }
+
+  let currentLanguage = detectInitialLanguage();
   let lastQuestion = null;
 
   function t() {
     return ui[currentLanguage];
   }
 
+  function getDatabase(language = currentLanguage) {
+    return databases[language] || databaseHr;
+  }
+
+  function getQuestionSet(language, questionCategory, type) {
+    const selectedDatabase = getDatabase(language);
+    return selectedDatabase && selectedDatabase[questionCategory]
+      ? selectedDatabase[questionCategory][type]
+      : null;
+  }
+
   function updateStaticUi() {
     const text = t();
     document.documentElement.lang = currentLanguage;
     document.title = text.pageTitle;
+
+    const languageSwitcher = document.getElementById("languageSwitcher");
+    if (languageSwitcher) languageSwitcher.setAttribute("aria-label", text.languageLabel);
 
     const playersTitle = document.querySelector("#screen1 h2");
     if (playersTitle) playersTitle.textContent = text.playersTitle;
@@ -83,24 +141,36 @@
       else btn.textContent = label;
     });
 
+    if (bottle) bottle.alt = text.bottleAlt;
+
     const footer = document.getElementById("footer");
     if (footer) footer.textContent = text.footer;
 
     document.querySelectorAll("[data-lang]").forEach(btn => {
-      btn.classList.toggle("active", btn.dataset.lang === currentLanguage);
-      btn.setAttribute("aria-pressed", btn.dataset.lang === currentLanguage ? "true" : "false");
+      const isActive = btn.dataset.lang === currentLanguage;
+      btn.classList.toggle("active", isActive);
+      btn.setAttribute("aria-pressed", isActive ? "true" : "false");
     });
   }
 
+  function renderLastQuestion() {
+    if (!lastQuestion || !screen3.classList.contains("active")) return false;
+
+    const questionSet = getQuestionSet(
+      currentLanguage,
+      lastQuestion.category,
+      lastQuestion.type
+    );
+
+    if (!questionSet || !questionSet[lastQuestion.index]) return false;
+
+    const label = lastQuestion.type === "truth" ? t().truth : t().dare;
+    challengeText.textContent = `${label}: ${questionSet[lastQuestion.index]}`;
+    return true;
+  }
+
   function updateGameUi() {
-    if (lastQuestion && screen3.classList.contains("active") && category !== "custom") {
-      const questionSet = database[category] && database[category][lastQuestion.type];
-      if (questionSet && questionSet.length) {
-        const safeIndex = Math.min(lastQuestion.index, questionSet.length - 1);
-        challengeText.textContent = `${lastQuestion.type === "truth" ? t().truth : t().dare}: ${questionSet[safeIndex]}`;
-        return;
-      }
-    }
+    if (renderLastQuestion()) return;
 
     if (truthBtn && dareBtn && challengeText.contains(truthBtn) && challengeText.contains(dareBtn)) {
       truthBtn.textContent = t().truth;
@@ -109,12 +179,36 @@
   }
 
   function setLanguage(language) {
-    if (!ui[language]) return;
+    if (!ui[language] || !databases[language]) return;
+
     currentLanguage = language;
     localStorage.setItem("truthOrDareLanguage", currentLanguage);
-    database = currentLanguage === "en" ? databaseEn : databaseHr;
+
+    // Keep the original game code compatible while switching databases in memory.
+    // No page reload is needed, so players, screen, bottle state and the current round stay intact.
+    database = getDatabase(currentLanguage);
+
     updateStaticUi();
     updateGameUi();
+  }
+
+  function validateTranslationCoverage() {
+    const categories = ["casual", "funny", "deep", "dirty18", "drink", "smoke"];
+    const types = ["truth", "dare"];
+
+    categories.forEach(questionCategory => {
+      types.forEach(type => {
+        const hrSet = getQuestionSet("hr", questionCategory, type) || [];
+        ["en", "de"].forEach(language => {
+          const translatedSet = getQuestionSet(language, questionCategory, type) || [];
+          if (translatedSet.length !== hrSet.length) {
+            console.warn(
+              `[i18n] ${language}.${questionCategory}.${type} has ${translatedSet.length} items; HR has ${hrSet.length}.`
+            );
+          }
+        });
+      });
+    });
   }
 
   toCategory.onclick = () => {
@@ -143,10 +237,17 @@
   };
 
   showQuestion = function(player, type) {
-    const questionSet = database[category][type];
+    const questionSet = getQuestionSet(currentLanguage, category, type);
+    if (!questionSet || !questionSet.length) return;
+
     const index = Math.floor(Math.random() * questionSet.length);
-    lastQuestion = { type, index };
-    challengeText.textContent = `${type === "truth" ? t().truth : t().dare}: ${questionSet[index]}`;
+    lastQuestion = {
+      category,
+      type,
+      index
+    };
+
+    renderLastQuestion();
   };
 
   document.querySelectorAll(".category").forEach(btn => {
@@ -161,5 +262,6 @@
     btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
   });
 
+  validateTranslationCoverage();
   setLanguage(currentLanguage);
 })();
