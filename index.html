@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Truth or Dare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Istina ili izazov</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="i18n/i18n.css" />
 </head>
 <body>
+  <div id="languageSwitcher" aria-label="Language">
+    <button type="button" data-lang="hr" aria-label="Hrvatski">HR</button>
+    <button type="button" data-lang="en" aria-label="English">EN</button>
+  </div>
+
   <div id="screen1" class="screen active">
     <h2>Unesi imena igrača</h2>
     <input type="text" id="playerInput" placeholder="Ime igrača" />
@@ -15,36 +21,43 @@
     <button id="toCategory">DALJE</button>
   </div>
 
-<div id="screen2" class="screen">
-  <button class="backBtn" data-back="1">⟵ Nazad</button>
-  <h2>Odaberi kategoriju</h2>
-  <div id="categories">
-    <button class="category" data-cat="casual">Casual</button>
-    <button class="category" data-cat="funny">Funny</button>
-    <button class="category" data-cat="deep">Deep</button>
-    <button class="category" data-cat="dirty18">Dirty 18+</button>
-    <button class="category" data-cat="custom">Custom</button>
-    <button class="category" data-cat="drink">Drink</button>
-<button class="category smoke-btn" data-cat="smoke">
- <img src="assets/weed.png" alt="Smoke" class="icon" />
-  <span>Smoke</span>
-</button>
+  <div id="screen2" class="screen">
+    <button class="backBtn" data-back="1">⟵ Nazad</button>
+    <h2>Odaberi kategoriju</h2>
+    <div id="categories">
+      <button class="category" data-cat="casual">Opušteno</button>
+      <button class="category" data-cat="funny">Smiješno</button>
+      <button class="category" data-cat="deep">Duboko</button>
+      <button class="category" data-cat="dirty18">Bez cenzure 18+</button>
+      <button class="category" data-cat="custom">Po želji</button>
+      <button class="category" data-cat="drink">Piće</button>
+      <button class="category smoke-btn" data-cat="smoke">
+        <img src="assets/weed.png" alt="" class="icon" />
+        <span>Dim</span>
+      </button>
+    </div>
   </div>
-</div>
-
 
   <div id="screen3" class="screen">
     <button class="backBtn" data-back="2">⟵ Nazad</button>
     <h2 id="currentPlayer"></h2>
-    <img src="assets/bottle.png" id="bottle" />
+    <img src="assets/bottle.png" id="bottle" alt="Bottle" />
     <p id="challengeText"></p>
   </div>
 
+  <footer id="footer">
+    © 2025 Free Games by BENA – Igra bez reklama i bez naplate
+  </footer>
+
   <audio id="spinSound" src="assets/glass_tap.mp3" preload="auto"></audio>
   <audio id="spinSoundSmoke" src="assets/smoke.mp3" preload="auto"></audio>
+
   <script src="script.js"></script>
+  <script src="i18n/en-casual-funny.js"></script>
+  <script src="i18n/en-deep.js"></script>
+  <script src="i18n/en-dirty18.js"></script>
+  <script src="i18n/en-drink.js"></script>
+  <script src="i18n/en-smoke.js"></script>
+  <script src="i18n/i18n.js"></script>
 </body>
 </html>
-<footer id="footer">
-  © 2025 Free Games by BENA – Igra bez reklama i bez naplate
-</footer>
