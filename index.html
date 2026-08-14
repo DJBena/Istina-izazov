@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="i18n/i18n.css" />
 </head>
 <body>
-  <div id="languageSwitcher" aria-label="Language">
+  <div id="languageSwitcher" aria-label="Jezik">
     <button type="button" data-lang="hr" aria-label="Hrvatski">HR</button>
     <button type="button" data-lang="en" aria-label="English">EN</button>
+    <button type="button" data-lang="de" aria-label="Deutsch">DE</button>
   </div>
 
   <div id="screen1" class="screen active">
@@ -41,7 +42,7 @@
   <div id="screen3" class="screen">
     <button class="backBtn" data-back="2">⟵ Nazad</button>
     <h2 id="currentPlayer"></h2>
-    <img src="assets/bottle.png" id="bottle" alt="Bottle" />
+    <img src="assets/bottle.png" id="bottle" alt="Boca" />
     <p id="challengeText"></p>
   </div>
 
@@ -53,11 +54,19 @@
   <audio id="spinSoundSmoke" src="assets/smoke.mp3" preload="auto"></audio>
 
   <script src="script.js"></script>
+
   <script src="i18n/en-casual-funny.js"></script>
   <script src="i18n/en-deep.js"></script>
   <script src="i18n/en-dirty18.js"></script>
   <script src="i18n/en-drink.js"></script>
   <script src="i18n/en-smoke.js"></script>
+
+  <script src="i18n/de-casual-funny.js"></script>
+  <script src="i18n/de-deep.js"></script>
+  <script src="i18n/de-dirty18.js"></script>
+  <script src="i18n/de-drink.js"></script>
+  <script src="i18n/de-smoke.js"></script>
+
   <script src="i18n/i18n.js"></script>
 </body>
 </html>
